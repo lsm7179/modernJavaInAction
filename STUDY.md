@@ -8,3 +8,8 @@
 Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()); // 형식을 추론하지 않음
 Comparator<Apple> c = (a1, a2) -> a1.getWeight().compareTo(a2.getWeight()); // 형식을 추론함
 ```
+
+## 4.1 스트림이란 무엇인가?
+스트림은 자바8에 추가된 기능이다. 스트림을 이용하면 선언형으로 컬렉션 데이터를 처리할 수 있다.   
+또한 스트림을 이용하면 멀티스테드 코드를 구현하지 않아도 데이터를 투명하게 병렬로 처리할 수 있다.   
+stream() -> parallelStream()으로 바꾸면 병렬로 실행할 수 있다. (7장에 성능이 나옴)
