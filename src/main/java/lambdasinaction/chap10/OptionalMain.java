@@ -5,9 +5,37 @@ import java.util.*;
 import static java.util.stream.Collectors.toSet;
 
 public class OptionalMain {
+    public static void main(String[] args) {
+        Car car = new Car("아반떼");
 
-    public String getCarInsuranceName(Optional<Person> person) {
-        return person.flatMap(Person::getCar)
+        Optional<Car> optCar = Optional.ofNullable(car);
+
+        Car 차량꺼냄 = optCar.orElse(getCar());
+        System.out.println(차량꺼냄.getName());
+        optCar.orElseGet(() -> orElseGetCar());
+
+
+        Optional opt = Optional.empty();
+        opt.orElse(new Object());
+    }
+
+    private static Car getCar() {
+        System.out.println("이친구는 값이 있어도 실행되요.");
+        return new Car();
+    }
+
+    private static Car orElseGetCar() {
+        System.out.println("이친구는 값이 있으면 실행 안되요.");
+        return new Car();
+    }
+
+    public String getCarInsuranceName(Optional<Person> optPerson) {
+
+        /*Optional<String> name = optPerson.map(Person::getCar)
+                .map(Car::getInsurance)
+                .map(Insurance::getName);*/
+
+        return optPerson.flatMap(Person::getCar)
                      .flatMap(Car::getInsurance)
                      .map(Insurance::getName)
                      .orElse("Unknown");
